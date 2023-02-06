@@ -1,6 +1,7 @@
 class EmployersController < ApplicationController
 
     before_action :authorize, only: :show
+
     def create
         employer = Employer.create!(employer_params)
         session[:user_id] = employer.id
@@ -40,7 +41,6 @@ class EmployersController < ApplicationController
         employers = Employer.all
          render json: employers
     end
-
 
 
     private
