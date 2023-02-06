@@ -3,6 +3,7 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom'
 import Navbar from './components/Navbar'
 import SignupForm from './components/SignupForm'
 import { UserContext } from './UserContext'
+import "bootstrap/dist/css/bootstrap.min.css"
 
 
 function App() {

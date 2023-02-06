@@ -15,19 +15,21 @@ import React, { useState } from 'react'
       
        
       
-        const changeAuthMode = () => {
-          setAuthMode(authMode === "employee" ? "employee" : "employer");
+        function changeAuthMode() {
+          setAuthMode(authMode === "employee" ? "employer" : "employee");
         };
       
         if (authMode === "employee") {
           return (
            <SignupFormEmployees changeAuthMode={changeAuthMode}/>
           );
+        } else {
+            return (
+                <SignupFormEmployers changeAuthMode={changeAuthMode} />
+            );
         }
       
-        return (
-            <SignupFormEmployers changeAuthMode={changeAuthMode} />
-        );
+        
       }
 
 export default SignupForm

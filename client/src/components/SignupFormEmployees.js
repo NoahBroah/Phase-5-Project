@@ -7,6 +7,8 @@ function SignupFormEmployees({ changeAuthMode }) {
   const [errors, setErrors] = useState([]);
   const [currentUser, setCurrentUser] = useContext(UserContext);
 
+ 
+
   function handleEmployeeSignup(e) {
     e.preventDefault();
     const user = {
