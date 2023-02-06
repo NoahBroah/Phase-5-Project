@@ -1,5 +1,5 @@
 class EmployeesController < ApplicationController
-    
+    before_action :authorize, only: :show
     def create
         employee = Employee.create!(employee_params)
         session[:user_id] = employee.id
@@ -17,7 +17,7 @@ class EmployeesController < ApplicationController
         if employee.id == current_user.id
             render json: employee, status: :ok
         else
-            renderjson: { errors: ["Not Authorized"]}, status: :unauthorized
+            render json: { errors: ["Not Authorized"]}, status: :unauthorized
         end
     end
 
@@ -33,6 +33,11 @@ class EmployeesController < ApplicationController
 
     def show
         render json: current_user, status: :ok
+    end
+
+    def index
+        employees = Employee.all
+         render json: employees
     end
 
 
