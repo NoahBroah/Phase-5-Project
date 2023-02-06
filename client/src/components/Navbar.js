@@ -1,8 +1,14 @@
-import React, { useState } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import { NavLink } from "react-router-dom";
+import { UserContext } from "../UserContext";
 
 function Navbar() {
-  const [user, setUser] = useState("");
+  
+  const [currentUser, setCurrentUser] = useContext(UserContext);
+
+  useEffect(() => {
+    console.log(currentUser)
+  })
 
   function handleLogout() {
     console.log("Logged Out");
