@@ -4,17 +4,21 @@ import { UserContext } from "../UserContext";
 function SignupFormEmployees({ changeAuthMode }) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
   const [errors, setErrors] = useState([]);
   const [currentUser, setCurrentUser] = useContext(UserContext);
 
- 
-
   function handleEmployeeSignup(e) {
     e.preventDefault();
+
     const user = {
-      email,
-      password,
+      first_name: firstName,
+      last_name: lastName,
+      email: email,
+      password: password,
     };
+
     fetch("/employees", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -24,7 +28,9 @@ function SignupFormEmployees({ changeAuthMode }) {
       .then((newUser) => {
         if (newUser?.errors) {
           setErrors(newUser.errors);
+          console.log("Yikes");
         } else {
+          console.log("hey");
           setCurrentUser(newUser);
           //   history.push('/')
         }
@@ -41,6 +47,26 @@ function SignupFormEmployees({ changeAuthMode }) {
             <span className="link-primary" onClick={changeAuthMode}>
               Employer
             </span>
+          </div>
+          <div className="form-group mt-3">
+            <label>First Name</label>
+            <input
+              type="firstName"
+              className="form-control mt-1"
+              placeholder="Enter first name"
+              value={firstName}
+              onChange={(e) => setFirstName(e.target.value)}
+            />
+          </div>
+          <div className="form-group mt-3">
+            <label>Last Name</label>
+            <input
+              type="lastName"
+              className="form-control mt-1"
+              placeholder="Enter email"
+              value={lastName}
+              onChange={(e) => setLastName(e.target.value)}
+            />
           </div>
           <div className="form-group mt-3">
             <label>Email</label>

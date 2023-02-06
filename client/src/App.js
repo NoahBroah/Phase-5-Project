@@ -1,4 +1,4 @@
-import React, { createContext, useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { BrowserRouter, Route, Switch } from 'react-router-dom'
 import Navbar from './components/Navbar'
 import SignupForm from './components/SignupForm'
@@ -20,15 +20,15 @@ function App() {
     });
   }, []);
 
-  useEffect(() => {
-    fetch("/employers").then((resp) => {
-      if (resp.ok) {
-        resp.json().then((user) => setCurrentUser(user));
-      } else {
-        resp.json().then((errorData) => setErrors(errorData.errors));
-      }
-    });
-  }, []);
+  // useEffect(() => {
+  //   fetch("/employers").then((resp) => {
+  //     if (resp.ok) {
+  //       resp.json().then((user) => setCurrentUser(user));
+  //     } else {
+  //       resp.json().then((errorData) => setErrors(errorData.errors));
+  //     }
+  //   });
+  // }, []);
 
 
 

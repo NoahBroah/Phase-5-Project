@@ -21,11 +21,9 @@ function Navbar() {
         </NavLink>
       </div>
       <div className="nav-inner">
-        {/* {!user ? null :
-    <NavLink to='/all_projects'>
-      View Projects
-    </NavLink>
-} */}
+        <div>
+          {/* {currentUser.first_name} */}
+        </div>
         <NavLink to="/signup" exact className="hvr-rotate">
           Signup
         </NavLink>
