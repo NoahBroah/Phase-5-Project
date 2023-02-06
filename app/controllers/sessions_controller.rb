@@ -5,12 +5,12 @@ class SessionsController < ApplicationController
 
         if employee&.authenticate(params[:password])
             session[:user_id] = employee.id
-            session[:is_employer] = false
+            session[:is_employer] = 0
             render json: employee, status: :created
 
         elsif employer&.authenticate(params[:password])
             session[:user_id] = employer.id
-            session[:is_employer] = true
+            session[:is_employer] = 1
             render json: employer, status: :created
         else
             render json: { errors: "Invalid Username or Password"}, status: :unauthorized
