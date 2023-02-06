@@ -14,10 +14,20 @@ class EmployeesController < ApplicationController
     def update
         employee = Employee.find_by(id: params[:id])
         employee.update!(employee_params)
-        if employee.id == session[:user_id]
+        if employee.id == @current_user.id
             render json: employee, status: :ok
         else
             renderjson: { errors: ["Not Authorized"]}, status: :unauthorized
+        end
+    end
+
+    def destroy
+        employee = Employee.find_by(id: params[:id])
+        if employee.id == @current_user.id
+            employee.delete
+            head :no_content
+        else
+            render json: { errors: ["Not Authorized"]}, status: :unauthorized
         end
     end
 
