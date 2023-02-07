@@ -1,11 +1,14 @@
 import React, { useContext, useState } from "react";
 import { UserContext } from "../UserContext";
+import { useHistory } from "react-router-dom"
 
 function EmployeeLogin({ changeAuthMode }) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [errors, setErrors] = useState([]);
   const [user, setUser] = useContext(UserContext);
+
+  const history = useHistory();
 
   function handleEmployeeLogin(e) {
     e.preventDefault();
@@ -27,8 +30,8 @@ function EmployeeLogin({ changeAuthMode }) {
           setErrors([employee.errors]);
         } else {
           console.log("hey");
-          setUser([employee]);
-          //   history.push('/')
+          setUser(employee);
+            history.push('/')
         }
       });
   }

@@ -30,7 +30,7 @@ function EmployerLogin({ changeAuthMode }) {
             console.log("Yikes");
           } else {
             console.log("hey");
-            setUser([employer]);
+            setUser(employer);
               history.push('/')
           }
         });

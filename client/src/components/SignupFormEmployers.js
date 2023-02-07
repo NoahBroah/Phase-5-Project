@@ -1,5 +1,6 @@
 import React, { useContext, useState } from "react";
 import { UserContext } from "../UserContext";
+import { useHistory } from "react-router-dom" 
 
 function SignupFormEmployers({ changeAuthMode }) {
   const [email, setEmail] = useState("");
@@ -7,7 +8,9 @@ function SignupFormEmployers({ changeAuthMode }) {
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [errors, setErrors] = useState([]);
-  const [setUser] = useContext(UserContext);
+  const [user, setUser] = useContext(UserContext);
+
+  const history = useHistory();
 
   function handleEmployerSignup(e) {
     e.preventDefault();
@@ -27,8 +30,8 @@ function SignupFormEmployers({ changeAuthMode }) {
         if (newEmployer?.errors) {
           setErrors([newEmployer.errors]);
         } else {
-          setUser([newEmployer]);
-          //   history.push('/')
+          setUser(newEmployer);
+            history.push('/')
         }
       });
   }

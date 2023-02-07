@@ -1,5 +1,6 @@
 import React, { useContext, useState } from "react";
 import { UserContext } from "../UserContext";
+import { useHistory } from "react-router-dom"
 
 function SignupFormEmployees({ changeAuthMode }) {
   const [email, setEmail] = useState("");
@@ -7,7 +8,9 @@ function SignupFormEmployees({ changeAuthMode }) {
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [errors, setErrors] = useState([]);
-  const [setUser] = useContext(UserContext);
+  const [user, setUser] = useContext(UserContext);
+
+  const history = useHistory();
 
   function handleEmployeeSignup(e) {
     e.preventDefault();
@@ -31,8 +34,8 @@ function SignupFormEmployees({ changeAuthMode }) {
           console.log("Yikes");
         } else {
           console.log("hey");
-          setUser([newEmployee]);
-          //   history.push('/')
+          setUser(newEmployee);
+            history.push('/')
         }
       });
   }
