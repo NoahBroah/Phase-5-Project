@@ -18,7 +18,7 @@ class SessionsController < ApplicationController
         end
     end
 
-    def delete
+    def destroy
         session.delete :user_id
         head :no_content
     end

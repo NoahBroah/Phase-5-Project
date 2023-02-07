@@ -5,7 +5,7 @@ class EmployersController < ApplicationController
     def create
         employer = Employer.create(employer_params)
         session[:user_id] = employer.id
-        session[:is_employer] = 1
+        session[:is_employer] = true
         if employer.valid?
             render json: employer, status: :created
         else

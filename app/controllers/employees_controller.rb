@@ -3,7 +3,7 @@ class EmployeesController < ApplicationController
     def create
         employee = Employee.create(employee_params)
         session[:user_id] = employee.id
-        session[:is_employer] = 0
+        session[:is_employer] = false
         if employee.valid?
             render json: employee, status: :created
         else

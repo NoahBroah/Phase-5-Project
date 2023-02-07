@@ -4,15 +4,23 @@ import { UserContext } from "../UserContext";
 
 function Navbar() {
   
-  const [currentUser, setCurrentUser] = useContext(UserContext);
+  const [user, setUser] = useContext(UserContext);
 
   useEffect(() => {
-    console.log(currentUser)
+    console.log(user)
   })
 
   function handleLogout() {
-    console.log("Logged Out");
+    fetch("/logout", {
+      method: "DELETE",
+    }).then((resp) => {
+      if (resp.ok) {
+        setUser(null);
+        alert("You have been logged out");
+      }
+    });
   }
+
   return (
     <div className="nav">
       <div className="nav-inner">

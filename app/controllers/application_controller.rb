@@ -8,7 +8,7 @@ class ApplicationController < ActionController::API
   end
 
   def current_user
-    if (session[:is_employer] === 1)
+    if (session[:is_employer] === true)
       @current_user ||= Employer.find_by(id: session[:user_id])
     else
       @current_user ||= Employee.find_by(id: session[:user_id])
