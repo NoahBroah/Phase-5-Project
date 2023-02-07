@@ -10,13 +10,13 @@ const UserProvider = ({ children }) => {
           if (resp.ok) {
             resp.json().then((user) => setUser(user));
           } else {
-            console.log("Yikes")
+            console.log("Not good")
           }
         });
-      }, []);
+      },[] );
 
     return (
-        <UserContext.Provider value={[user, setUser]}>
+        <UserContext.Provider value={[ user, setUser ]}>
             { children }
         </UserContext.Provider>
     );

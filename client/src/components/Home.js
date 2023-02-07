@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import { UserContext } from "../UserContext";
 function Home() {
-  const [user, setUser] = useContext(UserContext);
+  const [user] = useContext(UserContext);
 
   return (
     <div>

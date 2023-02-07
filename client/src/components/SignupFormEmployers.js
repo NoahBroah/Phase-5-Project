@@ -25,9 +25,9 @@ function SignupFormEmployers({ changeAuthMode }) {
       .then((resp) => resp.json())
       .then((newEmployer) => {
         if (newEmployer?.errors) {
-          setErrors(newEmployer.errors);
+          setErrors([newEmployer.errors]);
         } else {
-          setUser(newEmployer);
+          setUser([newEmployer]);
           //   history.push('/')
         }
       });

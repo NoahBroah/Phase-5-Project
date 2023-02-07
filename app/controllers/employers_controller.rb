@@ -3,13 +3,17 @@ class EmployersController < ApplicationController
     before_action :authorize, only: :show
 
     def create
-        employer = Employer.create(employer_params)
-        session[:user_id] = employer.id
-        session[:is_employer] = true
-        if employer.valid?
-            render json: employer, status: :created
+        if Employee.where(email: params[:email]).exists?
+            render json: { errors: "Oops, looks like you've already used this email. Please Login" }, status: :unprocessable_entity
         else
-            render json: { errors: employer.errors.full_messages }, status: :unprocessable_entity
+            employer = Employer.create(employer_params)
+            session[:user_id] = employer.id
+            session[:is_employer] = 1
+            if employer.valid?
+                render json: employer, status: :created
+            else
+                render json: { errors: employer.errors.full_messages }, status: :unprocessable_entity
+            end
         end
     end
 

@@ -27,11 +27,11 @@ function SignupFormEmployees({ changeAuthMode }) {
       .then((resp) => resp.json())
       .then((newEmployee) => {
         if (newEmployee?.errors) {
-          setErrors(newEmployee.errors);
+          setErrors([newEmployee.errors]);
           console.log("Yikes");
         } else {
           console.log("hey");
-          setUser(newEmployee);
+          setUser([newEmployee]);
           //   history.push('/')
         }
       });

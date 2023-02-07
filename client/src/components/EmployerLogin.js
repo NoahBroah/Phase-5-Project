@@ -1,11 +1,14 @@
 import React, { useContext, useState } from "react";
 import { UserContext } from "../UserContext";
+import { useHistory } from "react-router-dom"
 
 function EmployerLogin({ changeAuthMode }) {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [errors, setErrors] = useState([]);
-    const [setUser] = useContext(UserContext);
+    const [user, setUser] = useContext(UserContext);
+
+    const history = useHistory();
   
     function handleEmployerLogin(e) {
       e.preventDefault();
@@ -23,12 +26,12 @@ function EmployerLogin({ changeAuthMode }) {
         .then((resp) => resp.json())
         .then((employer) => {
           if (employer?.errors) {
-            setErrors(employer.errors);
+            setErrors([employer.errors]);
             console.log("Yikes");
           } else {
             console.log("hey");
-            setUser(employer);
-            //   history.push('/')
+            setUser([employer]);
+              history.push('/')
           }
         });
     }
