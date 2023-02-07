@@ -2,6 +2,9 @@ class ApplicationController < ActionController::API
   include ActionController::Cookies
   before_action :authorize
 
+  def show
+    render json: current_user, status: :ok
+  end
 
   def current_user
     if (session[:is_employer] == 1)

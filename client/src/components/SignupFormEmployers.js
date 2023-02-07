@@ -4,14 +4,18 @@ import { UserContext } from "../UserContext";
 function SignupFormEmployers({ changeAuthMode }) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
   const [errors, setErrors] = useState([]);
   const [currentUser, setCurrentUser] = useContext(UserContext);
 
   function handleEmployerSignup(e) {
     e.preventDefault();
     const user = {
-      email,
-      password,
+      first_name: firstName,
+      last_name: lastName,
+      email: email,
+      password: password,
     };
     fetch("/employers", {
       method: "POST",
@@ -39,6 +43,26 @@ function SignupFormEmployers({ changeAuthMode }) {
             <span className="link-primary" onClick={changeAuthMode}>
               Sign In
             </span>
+          </div>
+          <div className="form-group mt-3">
+            <label>First Name</label>
+            <input
+              type="firstName"
+              className="form-control mt-1"
+              placeholder="Enter first name"
+              value={firstName}
+              onChange={(e) => setFirstName(e.target.value)}
+            />
+          </div>
+          <div className="form-group mt-3">
+            <label>Last Name</label>
+            <input
+              type="lastName"
+              className="form-control mt-1"
+              placeholder="Enter email"
+              value={lastName}
+              onChange={(e) => setLastName(e.target.value)}
+            />
           </div>
           <div className="form-group mt-3">
             <label>Email</label>

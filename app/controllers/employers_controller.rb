@@ -3,7 +3,7 @@ class EmployersController < ApplicationController
     before_action :authorize, only: :show
 
     def create
-        employer = Employer.create!(employer_params)
+        employer = Employer.create(employer_params)
         session[:user_id] = employer.id
         session[:is_employer] = 1
         if employer.valid?
@@ -15,7 +15,7 @@ class EmployersController < ApplicationController
 
     def update
         employer = Employer.find_by(id: params[:id])
-        employer.update!(employer_params)
+        employer.update(employer_params)
         if employer.id == current_user.id
             render json: employer, status: :ok
         else
