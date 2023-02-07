@@ -5,7 +5,7 @@ function EmployerLogin({ changeAuthMode }) {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [errors, setErrors] = useState([]);
-    const [user, setUser] = useContext(UserContext);
+    const [setUser] = useContext(UserContext);
   
     function handleEmployerLogin(e) {
       e.preventDefault();
@@ -18,7 +18,7 @@ function EmployerLogin({ changeAuthMode }) {
       fetch("/login", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(user),
+        body: JSON.stringify(employer),
       })
         .then((resp) => resp.json())
         .then((employer) => {

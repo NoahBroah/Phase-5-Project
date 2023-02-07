@@ -7,7 +7,7 @@ function SignupFormEmployees({ changeAuthMode }) {
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [errors, setErrors] = useState([]);
-  const [user, setUser] = useContext(UserContext);
+  const [setUser] = useContext(UserContext);
 
   function handleEmployeeSignup(e) {
     e.preventDefault();
@@ -22,7 +22,7 @@ function SignupFormEmployees({ changeAuthMode }) {
     fetch("/employees", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(user),
+      body: JSON.stringify(newEmployee),
     })
       .then((resp) => resp.json())
       .then((newEmployee) => {

@@ -18,7 +18,7 @@ function EmployeeLogin({ changeAuthMode }) {
       fetch("/login", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(user),
+        body: JSON.stringify(employee),
       })
         .then((resp) => resp.json())
         .then((employee) => {
