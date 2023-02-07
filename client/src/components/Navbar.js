@@ -27,6 +27,9 @@ function Navbar() {
         <NavLink to="/signup" exact className="hvr-rotate">
           Signup
         </NavLink>
+        <NavLink to="/login" className="hvr-rotate">
+          Login
+        </NavLink>
         <NavLink to="/signup" className="hvr-rotate" onClick={handleLogout}>
           Logout
         </NavLink>

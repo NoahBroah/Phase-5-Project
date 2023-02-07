@@ -7,12 +7,12 @@ function SignupFormEmployees({ changeAuthMode }) {
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [errors, setErrors] = useState([]);
-  const [currentUser, setCurrentUser] = useContext(UserContext);
+  const [user, setUser] = useContext(UserContext);
 
   function handleEmployeeSignup(e) {
     e.preventDefault();
 
-    const user = {
+    const newEmployee = {
       first_name: firstName,
       last_name: lastName,
       email: email,
@@ -25,13 +25,13 @@ function SignupFormEmployees({ changeAuthMode }) {
       body: JSON.stringify(user),
     })
       .then((resp) => resp.json())
-      .then((newUser) => {
-        if (newUser?.errors) {
-          setErrors(newUser.errors);
+      .then((newEmployee) => {
+        if (newEmployee?.errors) {
+          setErrors(newEmployee.errors);
           console.log("Yikes");
         } else {
           console.log("hey");
-          setCurrentUser(newUser);
+          setUser(newEmployee);
           //   history.push('/')
         }
       });

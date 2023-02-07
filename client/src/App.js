@@ -1,14 +1,14 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import SignupForm from "./components/SignupForm";
 import { UserProvider } from "./UserContext";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Home from "./components/Home";
+import Login from "./components/Login";
 
 function App() {
-  const [currentUser, setCurrentUser] = useState(null);
-  const [errors, setErrors] = useState([]);
+ 
 
   // useEffect(() => {
   //   fetch("/employees").then((resp) => {
@@ -42,7 +42,9 @@ function App() {
             <Route exact path="/">
               <Home />
             </Route>
-            <Route></Route>
+            <Route exact path="/login">
+              <Login />
+            </Route>
           </Switch>
         </div>
       </BrowserRouter>

@@ -6,10 +6,6 @@ import React, { useState } from 'react'
 
     function SignupForm({ setCurrentUser }) {
         const [authMode, setAuthMode] = useState("employee");
-        const [email, setEmail] = useState("");
-        const [password, setPassword] = useState("");
-        const [errors, setErrors] = useState([])
-        // const history = useHistory();
       
         
       
