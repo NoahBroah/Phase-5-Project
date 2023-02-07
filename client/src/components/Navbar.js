@@ -38,9 +38,12 @@ function Navbar() {
         <NavLink to="/login" className="hvr-rotate">
           Login
         </NavLink>
+        {!!user ? null :
         <NavLink to="/login" className="hvr-rotate" onClick={handleLogout}>
-          Logout
-        </NavLink>
+        Logout
+      </NavLink>
+}
+        
       </div>
     </div>
   );
